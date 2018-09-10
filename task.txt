@@ -1,0 +1,8 @@
+1. Ангуляр 6 + webpack + devextreme + scss configuration 
+2. На выходе 2 бандла - vendor bundle, app bundle - output
+Вывести список элементов в форме,
+Возможность редактирования и создавания новых
+Валидация инпутов
+3. List, edit form, create list; input validation in the form
+memory api - inmemory
+4. Кнопка для редактирования, а при клике редактирование

@@ -1,0 +1,15 @@
+<h3>List component</h3>
+<button
+  type="button"
+  routerLink="/item/new"
+>
+  New item
+</button>
+<ul>
+  <li
+    *ngFor="let itemEl of list; let i = index"
+    [routerLink]="['/item', i, 'edit']"
+  >
+    {{ itemEl.name }}
+  </li>
+</ul>

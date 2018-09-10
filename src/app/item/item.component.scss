@@ -1,0 +1,27 @@
+form {
+  padding-left: 20px;
+}
+
+label {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+input {
+  height: 30px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 8px 15px;
+  background: #26b731;
+  color: #fff;
+  border: 1px solid #26b731;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    background: #0a6912;
+  }
+}
