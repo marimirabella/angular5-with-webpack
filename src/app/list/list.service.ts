@@ -1,17 +1,11 @@
 
-import { EventEmitter } from '@angular/core';
-
 import { ItemModel } from './item.model';
-import { Subject } from 'rxjs';
 
 export class ListService {
-  // startedEditing = new Subject<boolean>();
-  // startedEditing = new EventEmitter<number>();
-
   private list: ItemModel[] = [
-    new ItemModel('Item1'),
-    new ItemModel('Item2'),
-    new ItemModel('Item3')
+    new ItemModel('Item 1'),
+    new ItemModel('Item 2'),
+    new ItemModel('Item 3')
   ]
 
   getItems(): ItemModel[] {
@@ -22,4 +16,11 @@ export class ListService {
     return this.list[index];
   }
 
+  updateItem(index: number, changedItem: ItemModel) {
+    this.list = this.list.map((item, i) => index === i ? changedItem : item);
+  }
+
+  addItem(newItem: ItemModel) {
+    this.list = [...this.list, newItem];
+  }
 }

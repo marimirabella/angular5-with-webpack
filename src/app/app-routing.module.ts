@@ -7,11 +7,8 @@ import { ItemComponent } from './item/item.component';
 
 const appRoutes: Routes = [
   { path: '', component: ListComponent },
-  { path: 'item', component: ItemComponent, children: [
-    { path: '', component: ItemComponent },
-    { path: 'new', component: ItemComponent },
-    { path: ':id/edit', component: ItemComponent },
-  ]},
+  { path: 'item/new', component: ItemComponent },
+  { path: 'item/:id/edit', component: ItemComponent },
 ];
 
 @NgModule({

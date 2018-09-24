@@ -25,3 +25,19 @@ button {
     background: #0a6912;
   }
 }
+
+button:disabled {
+  background: grey;
+  border-color: grey;
+}
+
+.invalid {
+  color: red;
+  font-weight: bold;
+}
+
+.invalidInput {
+  font-weight: bold;
+  border-color: red;
+  border-style: dotted;
+}

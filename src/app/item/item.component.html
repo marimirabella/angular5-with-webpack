@@ -4,9 +4,13 @@
     type="text"
     id="name"
     name="name"
-    ngModel="model.name"
+    [ngClass]="{'invalidInput' : !name.valid && name.touched}"
+    [ngModel]="model.name"
+    pattern="[A-Z]{1}[a-z]+\s?\d+$"
+    #name="ngModel"
     required
   >
+  <p class="invalid" *ngIf="!name.valid && name.touched">Please enter a valid name</p>
   <br>
-  <button>Add</button>
+  <button [disabled]="!f.valid">{{ editMode ? 'Update' : 'Add'}}</button>
 </form>

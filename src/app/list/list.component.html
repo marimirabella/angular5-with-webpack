@@ -6,10 +6,10 @@
   New item
 </button>
 <ul>
-  <li
-    *ngFor="let itemEl of list; let i = index"
-    [routerLink]="['/item', i, 'edit']"
-  >
-    {{ itemEl.name }}
+    <li
+      *ngFor="let itemEl of list; let i = index"
+      [routerLink]="['/item', i, 'edit']"
+    >
+      {{ itemEl.name }}
   </li>
 </ul>

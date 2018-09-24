@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
+import { Component, OnInit, ViewChild, OnDestroy, Input } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Subscription } from "rxjs";
 
@@ -12,8 +12,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit, OnDestroy {
-  currentItem: Item;
   model: ItemModel;
+  id: number;
   editMode: boolean;
   subscription: Subscription;
   @ViewChild('f') itemForm: NgForm;
@@ -23,26 +23,33 @@ export class ItemComponent implements OnInit, OnDestroy {
               private route: ActivatedRoute) {}
 
   ngOnInit() {
-    console.log(this.route.snapshot.params['id']);
-    this.route.data
+    this.subscription = this.route.params
       .subscribe(
         (params) => {
-          console.log(params);
+          this.id = +params['id'];
+          if (this.id === this.id) {
+            this.model = this.listService.getItem(this.id);
+            this.editMode = true;
+          } else {
+            this.model = { name: '' };
+            this.editMode = false;
+          }
         }
       );
-    // if (edit) {
-    //   this.model = new ItemModel(data from route);
-    // }
-    // else {
-    //   this.model = new ItemModel();
-    // }
   }
 
   onSubmit() {
     console.log(this.itemForm);
+    const value = this.itemForm.value;
+    const newItem = new ItemModel(value.name);
+    this.editMode
+      ? this.listService.updateItem(this.id, newItem)
+      : this.listService.addItem(newItem);
+    this.itemForm.reset();
+    this.router.navigate(['/'], {relativeTo: this.route});
   }
 
   ngOnDestroy() {
-    // this.subscription.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }
