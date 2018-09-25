@@ -16,6 +16,14 @@ export class ListComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() {
-    this.list = this.listService.getItems();
+    // this.list = this.listService.getItems();
+    this.getItems();
+  }
+
+  getItems(): void {
+    this.listService.getItems()
+      .subscribe( items => {
+        this.list = items;
+      });
   }
 }
