@@ -1,10 +1,5 @@
 <h3>List component</h3>
-<button
-  type="button"
-  routerLink="/item/new"
->
-  New item
-</button>
+<dx-button type="success" text="New Item" routerLink="/item/new"></dx-button>
 <ul>
     <li
       *ngFor="let itemEl of list"
