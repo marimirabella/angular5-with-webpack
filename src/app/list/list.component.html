@@ -1,10 +1,34 @@
 <h3>List component</h3>
 <dx-button type="success" text="New Item" routerLink="/item/new"></dx-button>
-<ul>
+<!-- <ul>
     <li
       *ngFor="let itemEl of list"
       [routerLink]="['/item', itemEl.id, 'edit']"
     >
       {{ itemEl.name }}
   </li>
-</ul>
+</ul> -->
+<dx-data-grid
+  #grid
+  [dataSource]="list"
+  (onRowClick)="goToEditMode(grid.instance.getSelectedRowsData()[0])"
+>
+  <dxo-editing 
+    mode="popup"
+    useIcons=true
+    [allowUpdating]="true"
+    [allowDeleting]="true"
+    [allowAdding]="true">
+  </dxo-editing>
+  <dxo-search-panel 
+    [visible]="true" 
+    placeholder="Search..."></dxo-search-panel>
+  <dxo-selection mode="single"></dxo-selection>
+  <dxo-paging [pageSize]="5"></dxo-paging>
+  <dxo-pager
+      [showPageSizeSelector]="true"
+      [allowedPageSizes]="[5, 10]"
+      [showNavigationButtons]="true">
+  </dxo-pager>
+  <dxi-column dataField="name"></dxi-column>
+</dx-data-grid>
