@@ -37,7 +37,6 @@ export class ItemComponent implements OnInit, OnDestroy {
               });
             this.editMode = true;
           } else {
-            this.model = { id: 0, name: '' };
             this.editMode = false;
           }
         }
