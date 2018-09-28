@@ -28,9 +28,9 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.subscription = this.route.params
       .subscribe(
         (params: Params) => {
-          this.id = +params['id'];
-          if (this.id === this.id) {
+          if (params.id) {
             // this.model = this.listService.getItem(this.id);
+            this.id = +params['id'];
             this.listService.getItem(this.id)
               .subscribe(item => {
                 this.model = item;
